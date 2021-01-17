@@ -1,0 +1,169 @@
+body {
+    background-image: url("https://eventage.net/wp-content/uploads/2018/06/Question-Mark-Background-01.jpg");
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    justify-content: center;
+}
+
+* {
+    font-family: roboto;
+}
+
+.grow {
+    animation: fadein 1s, run 1s;
+
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.winner {
+    animation: party ease 1s infinite;
+
+}
+
+@keyframes party {
+    0% {
+        color: pink;
+    }
+
+    25% {
+        color: red;
+    }
+
+    50% {
+        color: green;
+    }
+
+    75% {
+        color: blue;
+    }
+
+    100% {
+        color: orange;
+    }
+}
+
+.points {
+    animation: fadein 1s, run 1s;
+
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes run {
+    100% {
+        transform: translateX(20px);
+    }
+}
+
+
+
+#container {
+    display: flex;
+    height: 560px;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    width: 800px;
+    padding: 20px;
+    background: rgb(37, 11, 241);
+    background: linear-gradient(0deg, rgba(37, 11, 241, 1) 0%, rgba(0, 194, 255, 1) 35%);
+    box-shadow: 10px 0 rgb(255, 255, 255, 75%);
+}
+
+.pointDiv {
+    width: 250px;
+    overflow: visible;
+}
+
+.pointDiv span {
+    color: blueviolet;
+}
+
+.currentPoints {
+    display: inline-block;
+}
+
+.points {
+    display: inline-block;
+}
+
+.options {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn-dark {
+    width: 175px;
+}
+
+#megaContainer {
+    display: flex;
+    margin-top: 50px;
+}
+
+.sidePanel {
+    margin-left: 8px;
+    height: auto;
+    width: 30px;
+    background: linear-gradient(-45deg, transparent 25%, #2863f7 25%, #008adf 50%, transparent 50%, transparent 75%, #00f2ee 75%);
+    background-size: 15px 15px;
+    -webkit-animation: barberpole 1.5s infinite linear;
+    animation: barberpole 1.5s infinite linear;
+}
+
+@keyframes barberpole {
+    from {
+        background-position: 0%;
+    }
+
+    to {
+        background-position: 200%;
+    }
+}
+
+.rules {
+    padding: 5px;
+    width: 650px;
+    color: crimson;
+    border: 2px purple solid;
+    border-radius: 10px;
+}

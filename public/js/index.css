@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap');
+
 body {
-    background-image: url("https://eventage.net/wp-content/uploads/2018/06/Question-Mark-Background-01.jpg");
+    background-image: url("https://thumbs.gfycat.com/AnimatedDeficientAlleycat-size_restricted.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,8 +14,9 @@ body {
     justify-content: center;
 }
 
+
 * {
-    font-family: roboto;
+    font-family: 'Dosis', sans-serif;
 }
 
 .grow {

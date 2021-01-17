@@ -112,7 +112,7 @@ class Game extends React.Component {
             return (
                 <div id="megaContainer">
                     <div id="container">
-                        <h1 style={{ color: "blue" }}><strong>Welcome to the inQUIZitor</strong> </h1>
+                        <h1 className="title" style={{ color: "blue" }}><strong>Welcome to the inQUIZitor</strong> </h1>
                         <div className="row rules">
                             <h5>Rules:</h5>
                             <h6 style={{ color: "green" }}>+1 for correct answer</h6>

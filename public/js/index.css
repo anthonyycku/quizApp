@@ -172,3 +172,41 @@ body {
     border: 2px purple solid;
     border-radius: 10px;
 }
+
+#time {
+    color: white;
+}
+
+#time .col-sm-7 {
+    font-size: 2em;
+    padding-right: 0;
+}
+
+#time .col-sm-5 {
+    padding: 0;
+}
+
+.timer {
+    animation: time 1s infinite;
+    color: red;
+    margin-right: 10px;
+}
+
+.seconds {
+    color: red;
+    margin-right: 10px;
+}
+
+@keyframes time {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}

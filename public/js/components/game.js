@@ -1,4 +1,8 @@
 class Game extends React.Component {
+    constructor() {
+        super();
+        this.timer = 0;
+    }
     state = {
         quizBox: [],
         quiz: {
@@ -7,9 +11,10 @@ class Game extends React.Component {
         },
         page: 'game',
         addPoint: 0,
-        gameStart: false
+        gameStart: false,
+        seconds: 10,
+        actions: 0
     };
-
     randomSelect = () => {
         const { selection } = this.state.quiz
         for (let i = selection.length - 1; i >= 0; i--) {
@@ -23,17 +28,22 @@ class Game extends React.Component {
         })
     }
     setPage = goto => {
+        clearInterval(this.timer);
         this.setState({
             page: goto
         });
         if (goto === "game") {
             this.setState({
-                gameStart: false,
                 quizBox: [],
                 quiz: {
-                    displayAnswer: "none",
+                    displayAnswer: 'none',
                     selection: []
-                }
+                },
+                page: 'game',
+                addPoint: 0,
+                gameStart: false,
+                seconds: 10,
+                actions: 0
             })
         }
         this.props.playAgain();
@@ -49,8 +59,34 @@ class Game extends React.Component {
         }, 1000)
     }
 
+    startTimer = () => {
+        if (this.state.seconds > 0) {
+            this.timer = setInterval(this.countDown, 1000);
+        }
+    }
+
+    countDown = () => {
+        let seconds = this.state.seconds - 1;
+        this.setState({
+            seconds: seconds
+        })
+
+        if (seconds === 0) {
+            clearInterval(this.timer);
+            this.props.gameOver();
+        }
+    }
+
     findQuestion = () => {
-        this.setState({ gameStart: true })
+        if (this.state.actions === 0) {
+            this.startTimer();
+            $(".seconds").toggleClass("timer");
+        }
+        this.setState({
+            gameStart: true,
+            actions: this.state.actions + 1
+        })
+
         axios.get('/quiz').then(res => {
             const randQuiz = Math.floor(Math.random() * res.data.length);
             const { quizBox } = this.state;
@@ -80,6 +116,9 @@ class Game extends React.Component {
         if (answer === event.target.innerText) {
             this.props.incrementPoints();
             this.addPointAnimation(1);
+            this.setState({
+                seconds: this.state.seconds + 5
+            })
             this.findQuestion();
         } else {
             this.props.decrementPoints();
@@ -107,7 +146,7 @@ class Game extends React.Component {
     };
 
     render = () => {
-        const { page, addPoint, gameStart, quiz } = this.state;
+        const { page, addPoint, gameStart, quiz, seconds } = this.state;
         if (page === "game") {
             return (
                 <div id="megaContainer">
@@ -115,12 +154,22 @@ class Game extends React.Component {
                         <h1 className="title" style={{ color: "blue" }}><strong>Welcome to the inQUIZitor</strong> </h1>
                         <div className="row rules">
                             <h5>Rules:</h5>
-                            <h6 style={{ color: "green" }}>+1 for correct answer</h6>
-                            <h6 style={{ color: "red" }}>-1 for wrong answer</h6>
-                            <h6 style={{ color: "purple" }}><strong>Reach 10 points to win!</strong></h6>
+                            <h6 style={{ color: "green" }}>+1 point, +5 seconds, for correct answer</h6>
+                            <h6 style={{ color: "red" }}>-1 point for wrong answer</h6>
+                            <h6 style={{ color: "purple" }}><strong>Reach 10 points before timer runs out!</strong></h6>
                         </div>
                         <br />
-                        <br />
+                        <div id="time" className="row" style={{ width: "100%", height: "60px" }}>
+                            <div className="col-sm-7" style={{ display: "flex", justifyContent: "flex-end" }}>
+                                <span className="seconds">{seconds}</span> seconds left!
+                            </div>
+                            <div className="col-sm-5">
+                                {addPoint > 0 ?
+                                    AddPoint("green", "+5 seconds", 2) : null
+                                }
+                            </div>
+
+                        </div>
                         <div className="pointDiv">
                             <h1 className="currentPoints">
                                 <span >Points: </span>
@@ -137,7 +186,6 @@ class Game extends React.Component {
                                 null
                             }
                         </div>
-
                         <h2 style={{ textAlign: "center" }}>
                             {this.state.quiz.question ? (
                                 <div>{this.state.quiz.question}</div>
@@ -157,17 +205,11 @@ class Game extends React.Component {
                             :
                             <button onClick={this.findQuestion} className="btn btn-outline-danger"><h2>Get inQUIZitive</h2></button>
                         }
-                        {/* <button onClick={this.displayAnswer}>Reveal Answer</button>
-                        <div style={{ display: this.state.displayAnswer }}>
-                            {this.state.displayAnswer ? (
-                                <h5>{this.state.quiz.answer}</h5>
-                            ) : null}
-                        </div> */}
                         <br />
                         <br />
                         <div style={{ width: "100%" }}>
                             <button onClick={() => this.setPage("create")} className="btn btn-success">Create</button>
-                            <button onClick={() => this.setPage("edit")} className="btn btn-warning">Edit</button>
+                            <button onClick={() => this.setPage("edit")} className="btn btn-warning" style={{ marginLeft: "10px" }}>Edit</button>
                         </div>
                     </div >
                     <div className="sidePanel"></div>
@@ -181,7 +223,14 @@ class Game extends React.Component {
     };
 }
 
-function AddPoint(color, point) {
+function AddPoint(color, point, version) {
+    if (version === 2) {
+        return (
+            <h2 style={{ color: color }} className="points">
+                {point}
+            </h2>
+        )
+    }
     return (
         <h1 style={{ color: color }} className="points">
             {point}

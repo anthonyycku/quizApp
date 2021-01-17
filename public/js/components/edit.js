@@ -30,6 +30,8 @@ class Edit extends React.Component {
         });
         setTimeout(() => {
             console.log(this.state.selection);
+            console.log(this.state.question);
+            console.log(this.state.answer);
         }, 50)
 
         setTimeout(() => {

@@ -141,6 +141,10 @@ body {
     width: 175px;
 }
 
+.btn-dark:hover {
+    background-color: green;
+}
+
 #megaContainer {
     display: flex;
     margin-top: 50px;

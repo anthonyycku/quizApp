@@ -42,7 +42,7 @@ class Game extends React.Component {
                 page: 'game',
                 addPoint: 0,
                 gameStart: false,
-                seconds: 10,
+                seconds: 15,
                 actions: 0
             })
         }

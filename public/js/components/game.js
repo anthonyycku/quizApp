@@ -12,7 +12,7 @@ class Game extends React.Component {
         page: 'game',
         addPoint: 0,
         gameStart: false,
-        seconds: 15,
+        seconds: 20,
         actions: 0
     };
     randomSelect = () => {
@@ -42,7 +42,7 @@ class Game extends React.Component {
                 page: 'game',
                 addPoint: 0,
                 gameStart: false,
-                seconds: 15,
+                seconds: 20,
                 actions: 0
             })
         }

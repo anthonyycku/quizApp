@@ -167,20 +167,6 @@ class Game extends React.Component {
                             <h6 style={{ color: "purple" }}><strong>Reach 10 points before timer runs out!</strong></h6>
                         </div>
                         <br />
-                        <div id="time" className="row" style={{ width: "100%", height: "60px" }}>
-                            <div className="col-sm-7" style={{ display: "flex", justifyContent: "flex-end" }}>
-                                <span className="seconds">{seconds}</span> seconds left!
-                            </div>
-                            <div className="col-sm-5">
-                                {addPoint > 0 ?
-                                    AddPoint("green", "+5 seconds", 2) : null
-                                }
-                                {addPoint < 0 ?
-                                    AddPoint("red", "-2 seconds", 2) : null
-                                }
-                            </div>
-
-                        </div>
                         <div className="pointDiv">
                             <h1 className="currentPoints">
                                 <span >Points: </span>
@@ -216,6 +202,20 @@ class Game extends React.Component {
                             :
                             <button onClick={this.findQuestion} className="btn btn-outline-danger"><h2>Get inQUIZitive</h2></button>
                         }
+                        <div id="time" className="row" style={{ width: "100%", height: "60px" }}>
+                            <div className="col-sm-7" style={{ display: "flex", justifyContent: "flex-end" }}>
+                                <span className="seconds">{seconds}</span> seconds left!
+                            </div>
+                            <div className="col-sm-5">
+                                {addPoint > 0 ?
+                                    AddPoint("green", "+5 seconds", 2) : null
+                                }
+                                {addPoint < 0 ?
+                                    AddPoint("red", "-2 seconds", 2) : null
+                                }
+                            </div>
+
+                        </div>
                         <br />
                         <br />
                         <div style={{ width: "100%" }}>

@@ -116,6 +116,7 @@ body {
 .pointDiv {
     width: 250px;
     overflow: visible;
+    padding-left: 50px;
 }
 
 .pointDiv span {
@@ -175,6 +176,7 @@ body {
 
 #time {
     color: white;
+    padding-left: 90px;
 }
 
 #time .col-sm-7 {

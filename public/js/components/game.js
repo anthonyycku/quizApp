@@ -164,7 +164,7 @@ class Game extends React.Component {
                         <div className="row rules">
                             <h5>Rules:</h5>
                             <h6 style={{ color: "green" }}>+1 point, +5 seconds, for correct answer</h6>
-                            <h6 style={{ color: "red" }}>-1 point for wrong answer</h6>
+                            <h6 style={{ color: "red" }}>-1 point, -2 seconds,  for wrong answer</h6>
                             <h6 style={{ color: "purple" }}><strong>Reach 10 points before timer runs out!</strong></h6>
                         </div>
                         <br />

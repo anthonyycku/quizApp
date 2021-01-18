@@ -12,7 +12,7 @@ class Game extends React.Component {
         page: 'game',
         addPoint: 0,
         gameStart: false,
-        seconds: 10,
+        seconds: 15,
         actions: 0
     };
     randomSelect = () => {
@@ -125,6 +125,9 @@ class Game extends React.Component {
                 this.props.decrementPoints();
                 this.addPointAnimation(-1);
                 this.findQuestion();
+                this.setState({
+                    seconds: this.state.seconds - 2
+                })
             } else {
                 this.addPointAnimation(-1);
                 this.findQuestion();
@@ -171,6 +174,9 @@ class Game extends React.Component {
                             <div className="col-sm-5">
                                 {addPoint > 0 ?
                                     AddPoint("green", "+5 seconds", 2) : null
+                                }
+                                {addPoint < 0 ?
+                                    AddPoint("red", "-2 seconds", 2) : null
                                 }
                             </div>
 

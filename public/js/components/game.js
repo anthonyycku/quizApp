@@ -71,7 +71,7 @@ class Game extends React.Component {
             seconds: seconds
         })
 
-        if (seconds === 0) {
+        if (seconds < 0) {
             clearInterval(this.timer);
             this.props.gameOver();
         }
@@ -125,13 +125,14 @@ class Game extends React.Component {
                 this.props.decrementPoints();
                 this.addPointAnimation(-1);
                 this.findQuestion();
-                this.setState({
-                    seconds: this.state.seconds - 2
-                })
+
             } else {
                 this.addPointAnimation(-1);
                 this.findQuestion();
             }
+            this.setState({
+                seconds: this.state.seconds - 2
+            })
         }
     };
 

@@ -125,6 +125,8 @@ class Game extends React.Component {
                 this.props.decrementPoints();
                 this.addPointAnimation(-1);
                 this.findQuestion();
+            } else {
+                this.findQuestion();
             }
         }
     };

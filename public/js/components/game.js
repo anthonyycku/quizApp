@@ -121,11 +121,10 @@ class Game extends React.Component {
             })
             this.findQuestion();
         } else {
-            if (this.state.points > 0) {
+            if (this.props.points > 0) {
                 this.props.decrementPoints();
                 this.addPointAnimation(-1);
                 this.findQuestion();
-
             } else {
                 this.addPointAnimation(-1);
                 this.findQuestion();

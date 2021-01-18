@@ -126,6 +126,7 @@ class Game extends React.Component {
                 this.addPointAnimation(-1);
                 this.findQuestion();
             } else {
+                this.addPointAnimation(-1);
                 this.findQuestion();
             }
         }
